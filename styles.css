@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* Poppins se carga desde Google Fonts; sans-serif queda como respaldo. */
+html, body { margin: 0; min-height: 100%; background: #076876; }
+#sargazo-app { --petrol: #006978; --ice: #a6eff6; position: relative; isolation: isolate; container-type: inline-size; width: 100%; aspect-ratio: 1546 / 1002; overflow: hidden; background: #076876; color: #fff; font-family: 'Poppins', sans-serif; }
+#sargazo-app * { box-sizing: border-box; }
+#sargazo-app .ocean, #sargazo-app .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+#sargazo-app .ocean { z-index: -2; }
+#sargazo-app .shade { z-index: -1; background: linear-gradient(105deg, rgba(0,39,45,.23), transparent 58%); pointer-events: none; }
+#sargazo-app h1 { position: absolute; top: 7.9%; left: 5.7%; margin: 0; font-size: min(80px, 4.3908cqw); line-height: 1.03; font-weight: 600; letter-spacing: -.025em; color: #fff; text-shadow: 0 3px 5px #003f4640; }
+#sargazo-app .metrics { position: absolute; top: 29%; left: 4.58%; display: flex; flex-direction: column; align-items: flex-start; gap: 2.65cqw; }
+#sargazo-app .metric-item { height: 8.6cqw; }
+#sargazo-app .metric-marker { position: relative; isolation: isolate; display: block; width: max(44px, 4.5cqw); height: max(44px, 4.5cqw); padding: 0; border: 0; border-radius: 50%; color: #fff; background: var(--petrol); font-family: 'Poppins', sans-serif; text-align: left; cursor: pointer; transition: width .4s ease, height .4s ease, border-radius .4s ease; }
+#sargazo-app .metric-marker::before { content: ''; position: absolute; inset: -7px; z-index: -1; border: 2px solid var(--ice); border-radius: 50%; pointer-events: none; animation: sargazo-pulse 1.9s ease-in-out infinite; }
+#sargazo-app .marker-symbol { display: grid; place-items: center; position: absolute; inset: 0; color: var(--ice); font-size: max(24px, 2.2cqw); animation: sargazo-blink 1.9s ease-in-out infinite; }
+#sargazo-app .marker-label { position: absolute; top: calc(100% + 10px); left: 0; padding: 2px 7px; border-radius: 4px; background: #005766d9; color: #fff; font-size: max(12px, 1cqw); }
+#sargazo-app .metric-marker[aria-expanded="true"] { width: max-content; min-width: 13cqw; height: 8.6cqw; border-radius: .9cqw; }
+#sargazo-app .metric-marker[data-reveal="area"][aria-expanded="true"] { width: max-content; min-width: 16cqw; }
+#sargazo-app .metric-marker[aria-expanded="true"]::before { animation: none; opacity: 0; }
+#sargazo-app .metric-marker[aria-expanded="true"] .marker-symbol, #sargazo-app .metric-marker[aria-expanded="true"] .marker-label { display: none; }
+#sargazo-app .metric { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 1.2cqw; animation: sargazo-reveal .4s ease both; }
+#sargazo-app .metric[hidden] { display: none; }
+@keyframes sargazo-pulse { 0%, 100% { opacity: .18; transform: scale(.88); } 50% { opacity: .85; transform: scale(1.16); } }
+@keyframes sargazo-blink { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+@keyframes sargazo-reveal { 0%, 40% { opacity: 0; } 100% { opacity: 1; } }
+#sargazo-app .value { font-size: 3.1cqw; line-height: 1.16; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#sargazo-app .value sup { font-size: .48em; vertical-align: super; }
+#sargazo-app .label { margin-top: .45cqw; font-size: 1.5cqw; line-height: 1.3; }
+#sargazo-app .bottom { position: absolute; left: 4.58%; right: 2.9%; bottom: 6.8%; display: flex; align-items: center; justify-content: space-between; gap: 5%; }
+#sargazo-app .timeline { width: 52.2%; background: var(--petrol); border-radius: .95cqw; padding: 1.15cqw 2cqw .9cqw; }
+#sargazo-app .timeline-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+#sargazo-app .timeline-header label { font-size: max(11px,.78cqw); letter-spacing: .11em; }
+#sargazo-app [data-date] { color: #fff; font-size: 1.55cqw; white-space: nowrap; }
+#sargazo-app input[type=range] { appearance: none; display: block; width: 100%; height: 25px; margin: 0; background: transparent; cursor: ew-resize; accent-color: #fff; }
+#sargazo-app input[type=range]::-webkit-slider-runnable-track { height: 2px; background: #fff; }
+#sargazo-app input[type=range]::-moz-range-track { height: 2px; background: #fff; }
+#sargazo-app input[type=range]::-webkit-slider-thumb { appearance: none; height: 18px; width: 18px; margin-top: -8px; border-radius: 50%; background: white; border: 0; box-shadow: 0 0 0 5px #a6eff677; }
+#sargazo-app input[type=range]::-moz-range-thumb { height: 18px; width: 18px; border-radius: 50%; background: white; border: 0; box-shadow: 0 0 0 5px #a6eff677; }
+#sargazo-app .years { display: flex; justify-content: space-between; font-size: max(11px,.7cqw); }
+#sargazo-app .play { display: flex; align-items: center; justify-content: center; gap: 1.2cqw; width: 23.7%; min-height: 5.8cqw; padding: 1.25cqw; border: 0; border-radius: 100px; background: var(--ice); color: var(--petrol); font: 500 1.8cqw 'Poppins', sans-serif; cursor: pointer; }
+#sargazo-app .play:hover { background: #c4f8fc; }
+#sargazo-app .play:disabled { cursor: wait; }
+#sargazo-app [data-icon] { font-size: 2.6cqw; line-height: 1; }
+#sargazo-app .simulation { position: absolute; left: 4.58%; bottom: 2.1%; padding: 4px 7px; border-radius: 3px; background: #005766cc; color: #fff; font-size: max(10px,.65cqw); letter-spacing: .08em; }
+#sargazo-app .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+#sargazo-app :focus-visible { outline: 3px solid white; outline-offset: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  #sargazo-app .metric-marker::before, #sargazo-app .marker-symbol, #sargazo-app .metric { animation: none; }
+  #sargazo-app .metric-marker { transition: none; }
+}
+
+#sargazo-app .metric-marker[data-reveal="density"][aria-expanded="true"] { width: max-content; min-width: 8.7cqw; }
+#sargazo-app .density-level { display: block; font-size: 1.05cqw; line-height: 1.3; font-weight: 400; text-transform: uppercase; margin-top: .2cqw; }
+#sargazo-app .sound { position: absolute; z-index: 2; top: 3%; right: 3%; padding: 11px 16px; border: 1px solid #a6eff680; border-radius: 30px; background: #006978e8; color: #fff; font: 500 12px 'Poppins', sans-serif; letter-spacing: .05em; cursor: pointer; min-height: 44px; }
+#sargazo-app .sound[aria-pressed="true"] { background: #a6eff6; color: #006978; }
+@media (max-width: 700px) { #sargazo-app .sound { top: 14px; right: 14px; font-size: 11px; padding: 8px 12px; } }
+
+#sargazo-app .mass-unit { font-size: 1em; font-weight: inherit; }
+
+/* En pantallas estrechas el flujo reserva espacio real para cada bloque. */
+@media (max-width: 900px) {
+  #sargazo-app { aspect-ratio: auto; padding: 90px 4.58% 24px; display: flex; flex-direction: column; gap: 32px; }
+  #sargazo-app h1 { position: static; font-size: clamp(28px,7cqw,60px); }
+  #sargazo-app .metrics { position: static; gap: 24px; }
+  #sargazo-app .metric-item { height: 104px; }
+  #sargazo-app .metric-marker[aria-expanded="true"] { height: 104px; width: max-content; min-width: 140px; border-radius: 10px; }
+  #sargazo-app .metric-marker[data-reveal="area"][aria-expanded="true"] { width: max-content; min-width: 190px; }
+  #sargazo-app .metric-marker[data-reveal="density"][aria-expanded="true"] { width: max-content; min-width: 120px; }
+  #sargazo-app .metric { padding: 14px 18px; }
+  #sargazo-app .value { font-size: clamp(22px,6cqw,32px); }
+  #sargazo-app .label { font-size: clamp(15px,4cqw,20px); }
+  #sargazo-app .density-level { font-size: 13px; }
+  #sargazo-app .bottom { position: static; display: flex; flex-wrap: wrap; gap: 22px; }
+  #sargazo-app .timeline { width: 100%; padding: 14px 18px 10px; border-radius: 10px; }
+  #sargazo-app .timeline-header { gap: 12px; flex-wrap: wrap; }
+  #sargazo-app .timeline-header label { font-size: 11px; }
+  #sargazo-app [data-date] { font-size: 18px; margin-left: auto; }
+  #sargazo-app input[type=range] { height: 34px; }
+  #sargazo-app .play { margin-left: auto; width: 220px; max-width: 100%; min-height: 54px; font-size: 18px; gap: 14px; }
+  #sargazo-app [data-icon] { font-size: 24px; }
+  #sargazo-app .simulation { position: static; align-self: flex-start; font-size: 10px; }
+  #sargazo-app .sound { top: 16px; right: 4.58%; }
+}
+#sargazo-app #density-detail { padding-top: .5cqw; padding-bottom: .5cqw; }
+@media (max-width: 900px) {
+  #sargazo-app #density-detail { padding-top: 12px; padding-bottom: 12px; }
+}
+
+/* Portada: comparte exclusivamente el fondo animado con el simulador. */
+#sargazo-app .landing { position: absolute; inset: 19% 8.1% 13.5%; display: flex; flex-direction: column; align-items: flex-start; gap: 4.2cqw; }
+#sargazo-app .landing h1 { position: static; font-size: 6.4cqw; line-height: 1; font-weight: 600; letter-spacing: -.025em; }
+#sargazo-app .landing h1 span { color: var(--ice); font-size: 1.12em; }
+#sargazo-app .intro-copy { max-width: 48cqw; font-size: 1.5cqw; line-height: 1.3; font-weight: 400; text-shadow: 0 2px 4px #00454e40; }
+#sargazo-app .intro-copy p { margin: 0 0 1.65cqw; }
+#sargazo-app .intro-copy p:last-child { margin-bottom: 0; }
+#sargazo-app :is(.intro-continue, .return-home) { display: flex; align-items: center; justify-content: center; gap: 1.4cqw; width: 22cqw; min-height: 5.8cqw; margin-top: auto; border-radius: 100px; background: var(--ice); color: var(--petrol); font-size: 1.8cqw; font-weight: 500; text-decoration: none; box-shadow: 0 3px 4px #003a4b30; }
+#sargazo-app :is(.intro-continue, .return-home) span { font-size: 2.8cqw; }
+#sargazo-app[data-page="intro"] .shade { background: linear-gradient(100deg,#005e68a6 0%,#005c6660 60%,#005c6633 100%); }
+#sargazo-app[data-page="intro"] .simulation-ui { display: none; }
+#sargazo-app[data-page="simulation"] .landing { display: none; }
+#sargazo-app .simulation-ui { display: contents; }
+@media (max-width: 900px) {
+  #sargazo-app[data-page="intro"] { min-height: 720px; }
+  #sargazo-app .landing { position: static; gap: 36px; }
+  #sargazo-app .landing h1 { font-size: clamp(27px,6.4cqw,58px); }
+  #sargazo-app .intro-copy { max-width: 600px; font-size: clamp(16px,2cqw,20px); line-height: 1.5; }
+  #sargazo-app .intro-copy p { margin-bottom: 22px; }
+  #sargazo-app :is(.intro-continue, .return-home) { width: 230px; min-height: 58px; font-size: 18px; gap: 18px; }
+  #sargazo-app :is(.intro-continue, .return-home) span { font-size: 28px; }
+}
+
+/* Marca suministrada: proporción y transparencia originales. */
+#sargazo-app .landing .brand-title { width: 51.4cqw; max-width: 100%; margin: 0; line-height: 0; }
+#sargazo-app .brand-title img { display: block; width: 100%; height: auto; }
+/* Un único diseño de CONTINUAR para ambas pantallas. */
+#sargazo-app :is(.intro-continue, .return-home), #sargazo-app .play {
+  --arrow-size: 2.5cqw;
+  width: 22cqw; height: 5.83cqw; min-height: 0; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; gap: 1.4cqw;
+  padding: 0 2cqw; border: 0; border-radius: 999px;
+  background: #a6eff6; color: #006978;
+  font-family: 'Poppins', sans-serif; font-size: 1.7cqw; font-weight: 400;
+  line-height: 1; text-decoration: none;
+  box-shadow: 0 .48cqw .6cqw -.12cqw #003e4c66;
+}
+#sargazo-app :is(.intro-continue, .return-home):hover, #sargazo-app .play:hover { background: #a6eff6; }
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow,
+#sargazo-app .play[data-mode="continue"] .continue-arrow {
+  position: relative; display: block; flex: 0 0 var(--arrow-size);
+  width: var(--arrow-size); height: var(--arrow-size); font-size: 0;
+}
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::before,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::before {
+  content: ''; position: absolute; width: 90%; height: 8%; top: 46%; left: 0;
+  border-radius: 10px; background: currentColor;
+}
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::after,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::after {
+  content: ''; position: absolute; width: 62%; height: 62%; top: 19%; right: 7%;
+  border-top: calc(var(--arrow-size)*.08) solid currentColor;
+  border-right: calc(var(--arrow-size)*.08) solid currentColor;
+  border-radius: 2px; transform: rotate(45deg);
+}
+@media (max-width: 900px) {
+  #sargazo-app .landing .brand-title { width: min(100%, 600px); }
+  #sargazo-app :is(.intro-continue, .return-home), #sargazo-app .play {
+    --arrow-size: 28px; width: 240px; max-width: 100%; height: 64px;
+    min-height: 64px; font-size: 19px; gap: 17px; padding: 0 20px;
+    box-shadow: 0 6px 9px -2px #003e4c66;
+  }
+}
+
+/* Explicaciones visibles únicamente cuando se revela su indicador. */
+#sargazo-app .metric-item { display: flex; align-items: center; gap: 2.6cqw; }
+#sargazo-app .metric-marker { flex-shrink: 0; }
+#sargazo-app .metric-explanation { margin: 0; max-width: 28cqw; font-size: 1.5cqw; line-height: 1.3; font-weight: 400; color: #fff; text-shadow: 0 2px 5px #003b45b3; }
+#sargazo-app .metric-explanation[hidden] { display: none; }
+@media (max-width: 900px) {
+  #sargazo-app .metrics { width: 100%; }
+  #sargazo-app .metric-item { width: 100%; height: auto; min-height: 104px; flex-wrap: wrap; gap: 14px 22px; }
+  #sargazo-app .metric-explanation { flex: 1 1 210px; max-width: 380px; font-size: 16px; line-height: 1.4; }
+}
+
+/* Cortes editoriales de las referencias, sin cambiar la jerarquía. */
+#sargazo-app .intro-copy { width: max-content; max-width: 75cqw; }
+#sargazo-app .copy-line { display: block; white-space: nowrap; }
+#sargazo-app .metric-explanation { width: max-content; max-width: 22cqw; }
+#sargazo-app .description-line { display: block; white-space: nowrap; }
+@media (max-width: 900px) {
+  #sargazo-app .intro-copy { width: 100%; max-width: 600px; }
+  #sargazo-app .intro-copy p { text-wrap: pretty; }
+  #sargazo-app .copy-line { display: inline; white-space: normal; }
+  #sargazo-app .metric-explanation { flex: 0 1 auto; width: max-content; max-width: 100%; }
+}
+/* Los tres trazos de la flecha comparten el mismo punto de unión. */
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow,
+#sargazo-app .play[data-mode="continue"] .continue-arrow {
+  background: linear-gradient(currentColor,currentColor) left center / 94% 8% no-repeat;
+}
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::before,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::before,
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::after,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::after {
+  width: 60%; height: 8%; top: 46%; right: 6%; left: auto;
+  border: 0; border-radius: 999px; background: currentColor;
+  transform-origin: right center;
+}
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::before,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::before { transform: rotate(45deg); }
+#sargazo-app :is(.intro-continue, .return-home) .continue-arrow::after,
+#sargazo-app .play[data-mode="continue"] .continue-arrow::after { transform: rotate(-45deg); }
+#sargazo-app .simulation { background: transparent; padding: 0; border: 0; border-radius: 0; box-shadow: none; text-shadow: 0 1px 3px #003e4c80; }
+/* Descripciones secundarias más pequeñas que las etiquetas de los datos. */
+#sargazo-app .metric-explanation { font-size: 1.2cqw; line-height: 1.4; }
+@media (max-width: 900px) {
+  #sargazo-app .metric-explanation { font-size: 14px; }
+}
+/* Segunda pantalla: contenido más alto y mayor margen inferior. */
+@media (min-width: 901px) {
+  #sargazo-app[data-page="simulation"] h1 { top: 3%; }
+  #sargazo-app[data-page="simulation"] .metrics { top: 24.1%; }
+  #sargazo-app[data-page="simulation"] .bottom { bottom: 11.7%; }
+  #sargazo-app[data-page="simulation"] .simulation { bottom: 7%; }
+}
+@media (max-width: 900px) {
+  #sargazo-app[data-page="simulation"] { padding-top: 72px; padding-bottom: 48px; }
+}
+/* Portada: mayor contraste para el logo y la introducción. */
+#sargazo-app[data-page="intro"] .shade {
+  background: linear-gradient(100deg, rgba(0,65,76,.76) 0%, rgba(0,65,76,.63) 60%, rgba(0,65,76,.48) 100%);
+}
+
+/* Pantalla final: proceso conceptual y reflexión inicial. */
+#sargazo-app .concept-page { display: none; }
+#sargazo-app[data-page="concept"] { aspect-ratio: 1470 / 955; background: radial-gradient(ellipse at 69% 42%, #04a4b5 0%, #007e8b 40%, #006572 82%); }
+#sargazo-app[data-page="concept"] > :not(.concept-page) { display: none !important; }
+#sargazo-app[data-page="concept"] .concept-page { display: flex; align-items: center; min-height: 64.965986cqw; color: #fff; }
+#sargazo-app .concept-content { width: 100%; padding: 5.7cqw 17.8%; }
+#sargazo-app .concept-author { margin: 0; text-align: center; font-size: 1.1cqw; font-weight: 500; letter-spacing: .13em; }
+#sargazo-app .concept-title { margin: 3.5cqw auto 4.7cqw; width: 52cqw; max-width: 100%; line-height: 1; }
+#sargazo-app .concept-title img { display: block; width: 100%; height: auto; }
+#sargazo-app .concept-columns { display: grid; grid-template-columns: 1.08fr 1.02fr .9fr; gap: 3.1cqw; }
+#sargazo-app .concept-columns section + section { margin-top: 2cqw; }
+#sargazo-app .concept-columns h3 { margin: 0 0 .6cqw; font-size: 1.3cqw; line-height: 1.3; font-weight: 600; }
+#sargazo-app .concept-columns p { margin: 0 0 .35cqw; font-size: 1.12cqw; line-height: 1.27; font-weight: 400; }
+#sargazo-app .concept-columns section:last-child > p:last-child { margin-bottom: 0; }
+#sargazo-app .concept-columns strong { font-weight: 600; }
+#sargazo-app .concept-columns a { color: inherit; text-decoration: none; }
+#sargazo-app .concept-columns a:hover { text-decoration: underline; }
+#sargazo-app .concept-columns .source-gap { margin-top: 1.5cqw; }
+#sargazo-app .reflection-overlay { position: absolute; inset: 0; z-index: 20; background: #006c79a8; display: grid; place-items: center; padding: 3cqw; }
+#sargazo-app .reflection-overlay[hidden] { display: none; }
+#sargazo-app .reflection-card { position: relative; display: flex; align-items: center; width: 35cqw; min-height: 44cqw; padding: 6.5cqw 2.5cqw 5cqw; background: #fff; color: #007084; border-radius: 1.5cqw; box-shadow: 0 .3cqw .35cqw #003b4433; text-align: center; }
+#sargazo-app .reflection-card p { font-size: 1.5cqw; line-height: 1.35; margin: 0 0 2.2cqw; }
+#sargazo-app .reflection-card p:last-child { margin-bottom: 0; }
+#sargazo-app .reflection-card strong { font-weight: 600; }
+#sargazo-app .reflection-close { position: absolute; top: 1.5cqw; right: 1.6cqw; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: #007084; font-family: inherit; font-size: max(28px,2.2cqw); line-height: 1; cursor: pointer; }
+@media (max-width: 700px) {
+  #sargazo-app[data-page="concept"] { aspect-ratio: auto; min-height: 680px; overflow: visible; }
+  #sargazo-app .concept-content { padding: 40px 24px; }
+  #sargazo-app .concept-author { font-size: 11px; }
+  #sargazo-app .concept-title { width: 100%; margin: 32px 0 38px; }
+  #sargazo-app .concept-columns { grid-template-columns: 1fr; gap: 26px; }
+  #sargazo-app .concept-columns section + section { margin-top: 26px; }
+  #sargazo-app .concept-columns h3 { font-size: 17px; margin-bottom: 10px; }
+  #sargazo-app .concept-columns p { font-size: 15px; line-height: 1.45; margin-bottom: 7px; }
+  #sargazo-app .concept-columns .source-gap { margin-top: 20px; }
+  #sargazo-app .reflection-overlay { align-items: start; padding: 50px 16px; }
+  #sargazo-app .reflection-card { width: min(100%,450px); min-height: 550px; padding: 76px 24px 40px; border-radius: 22px; }
+  #sargazo-app .reflection-card p { font-size: 17px; line-height: 1.4; margin-bottom: 26px; }
+  #sargazo-app .reflection-close { top: 12px; right: 12px; }
+}
+
+/* Regreso al inicio, alineado con la base de las columnas. */
+#sargazo-app .concept-sources { display: flex; flex-direction: column; }
+#sargazo-app .concept-sources .return-home { --arrow-size: 2cqw; width: 100%; height: 6.6cqw; min-height: 44px; margin-top: auto; padding: 1.1cqw 1.5cqw; gap: 1cqw; }
+#sargazo-app .return-home .return-label { font-size: 1.55cqw; line-height: 1.15; text-align: center; }
+@media (max-width: 700px) {
+  #sargazo-app .concept-sources .return-home { --arrow-size: 26px; width: 250px; height: 80px; margin-top: 30px; padding: 16px 22px; gap: 18px; }
+  #sargazo-app .return-home .return-label { font-size: 18px; }
+}
+
+/* Composición de referencia: lienzo de 1706 × 1102. */
+@media (min-width: 701px) {
+  #sargazo-app[data-page="concept"] { aspect-ratio: 1706 / 1102; }
+  #sargazo-app[data-page="concept"] .concept-page { min-height: 64.595545cqw; display: block; }
+  #sargazo-app .concept-content { position: relative; height: 64.595545cqw; padding: 0; }
+  #sargazo-app .concept-author { position: absolute; top: 5.69cqw; left: 0; width: 100%; font-size: 1.17233cqw; line-height: 1.4; letter-spacing: .13em; }
+  #sargazo-app .concept-title { position: absolute; top: 10.5cqw; left: 24.2cqw; width: 51.4cqw; max-width: none; margin: 0; }
+  #sargazo-app .concept-columns { position: absolute; top: 27.49cqw; left: 17.81946cqw; width: 64.24384cqw; grid-template-columns: 21.102cqw 19.988cqw 16.999cqw; column-gap: 3.077cqw; }
+  #sargazo-app .concept-columns h3 { font-size: 1.36cqw; line-height: 1.25; margin: 0 0 .62cqw; letter-spacing: -.025em; white-space: nowrap; }
+  #sargazo-app .concept-columns p { font-size: 1.14cqw; line-height: 1.23; margin: 0 0 .32cqw; letter-spacing: -.022em; white-space: nowrap; }
+  #sargazo-app .concept-columns section + section { margin-top: 1.93cqw; }
+  #sargazo-app .concept-columns > div:first-child section + section { margin-top: 1.96cqw; }
+  #sargazo-app .concept-columns .source-gap { margin-top: 1.41cqw; }
+  #sargazo-app .concept-sources { position: relative; }
+  #sargazo-app .concept-sources .return-home { position: absolute; top: 23.07cqw; left: 0; width: 16.999cqw; height: 6.68cqw; margin: 0; }
+  #sargazo-app .return-home .return-label { font-size: 1.55cqw; line-height: 1.14; }
+}
+@media (max-width: 700px) {
+  #sargazo-app .reference-break { display: none; }
+}
+
+/* Color del texto y la flecha del botón de regreso. */
+#sargazo-app .concept-columns a.return-home,
+#sargazo-app .concept-columns a.return-home .return-label,
+#sargazo-app .concept-columns a.return-home .continue-arrow { color: #006978; }

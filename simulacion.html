@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Una presencia creciente — Sargazo</title>
+  <link rel="stylesheet" href="styles.css?v=manual-1">
+  <script src="script.js?v=manual-1" defer></script>
+</head>
+<body>
+  <main id="sargazo-app" data-page="simulation" aria-label="Simulador de concentración de sargazo">
+    <canvas class="ocean" aria-label="Evolución visual de la concentración de sargazo"></canvas>
+    <div class="shade" aria-hidden="true"></div>
+    <button class="sound" type="button" aria-pressed="false" aria-label="Activar sonido de las olas">ACTIVAR SONIDO</button>
+    <h1>UNA PRESENCIA<br>CRECIENTE</h1>
+    <section class="metrics" aria-label="Mediciones simuladas">
+      <div class="metric-item">
+        <button class="metric-marker" type="button" data-reveal="biomass" aria-expanded="false" aria-controls="biomass-detail" aria-label="Mostrar biomasa">
+          <span class="marker-symbol" aria-hidden="true">+</span>
+          <span class="marker-label" aria-hidden="true">Biomasa</span>
+          <span class="metric" id="biomass-detail" hidden>
+            <span class="value"><span data-biomass>1.7</span> M <small class="mass-unit">t</small></span>
+            <span class="label">Biomasa</span>
+          </span>
+        </button>
+        <p class="metric-explanation" id="biomass-explanation" hidden><span class="description-line">Cantidad total de </span><span class="description-line">sargazo presente </span><span class="description-line">en una zona.</span></p>
+      </div>
+      <div class="metric-item">
+        <button class="metric-marker" type="button" data-reveal="area" aria-expanded="false" aria-controls="area-detail" aria-label="Mostrar extensión">
+          <span class="marker-symbol" aria-hidden="true">+</span>
+          <span class="marker-label" aria-hidden="true">Extensión</span>
+          <span class="metric" id="area-detail" hidden>
+            <span class="value"><span data-area>1,584</span> KM<sup>2</sup></span>
+            <span class="label">Extensión</span>
+          </span>
+        </button>
+        <p class="metric-explanation" id="area-explanation" hidden><span class="description-line">Superficie del mar </span><span class="description-line">donde se detecta </span><span class="description-line">presencia de sargazo.</span></p>
+      </div>
+      <div class="metric-item">
+        <button class="metric-marker" type="button" data-reveal="density" aria-expanded="false" aria-controls="density-detail" aria-label="Mostrar densidad">
+          <span class="marker-symbol" aria-hidden="true">+</span>
+          <span class="marker-label" aria-hidden="true">Densidad</span>
+          <span class="metric" id="density-detail" hidden>
+            <span class="value"><span data-density>2.0</span> %</span>
+            <span class="label">Densidad</span>
+            <span class="density-level" data-density-level>Baja</span>
+          </span>
+        </button>
+        <p class="metric-explanation" id="density-explanation" hidden><span class="description-line">Porcentaje de la </span><span class="description-line">superficie cubierta </span><span class="description-line">por sargazo.</span></p>
+      </div>
+    </section>
+    <div class="bottom">
+      <section class="timeline" aria-label="Línea del tiempo">
+        <div class="timeline-header"><label for="sargazo-time">CONCENTRACIÓN DE SARGAZO</label><output data-date for="sargazo-time">ENERO · 2011</output></div>
+        <input id="sargazo-time" type="range" min="0" max="10000" step="1" value="0" aria-label="Recorrer la evolución del sargazo" disabled>
+        <div class="years"><span>2011</span><span>2026</span></div>
+      </section>
+      <button class="play" type="button" disabled><span data-action>CARGANDO</span><span class="continue-arrow" data-icon aria-hidden="true">→</span></button>
+    </div>
+    <div class="simulation">SIMULACIÓN · MAR CARIBE · DONDE EL AZUL DESAPARECE</div>
+    <div class="sr-only" data-status role="status" aria-live="polite">Cargando la secuencia.</div>
+  </main>
+</body>
+</html>
